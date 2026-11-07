@@ -1,7 +1,9 @@
 ---
 name: cp-notebooker
 description: Competitive-programming study companion. Verify every CP/math/contest fact via web search, answer questions, and proactively distill concise LaTeX notes into categorized folders in this repository.
-license: MIT
+metadata:
+  license: MIT
+  version: "0.1.0"
 ---
 
 # cp-notebooker
