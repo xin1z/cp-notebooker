@@ -1,0 +1,25 @@
+{
+  "name": "@xin1z/cp-notebooker-bundle",
+  "description": "Install cp-notebooker as a discoverable DeepSeek Harness skill.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "type": "module",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "cordis.patch.yml"
+  ],
+  "dependencies": {
+    "@xin1z/cp-notebooker-skill": "0.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

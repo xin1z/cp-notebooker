@@ -1,0 +1,51 @@
+# cp-notebooker bundle
+
+npm 可发布的 DSH skill bundle，结构镜像官方 `@deepseek-ai/dsh-experimental-badge-skill-bundle`（`dsh-skill-badge` 插件 + bundle 元数据包）。
+
+## 结构
+
+```
+bundle/
+├── scripts/sync-skill.mjs          # 把 ../cp-notebooker/SKILL.md 的正文同步进插件资产
+├── cp-notebooker-skill/            # 插件：注册 bundled skill provider
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── assets/cp-notebooker.md     # skill 正文（无 frontmatter，由 sync 脚本生成）
+│   └── src/index.ts
+└── cp-notebooker-bundle/           # bundle：可安装的元数据包
+    ├── package.json               # dsh.bundle.patch → cordis.patch.yml
+    └── cordis.patch.yml
+```
+
+## 发布
+
+先发插件包，再发 bundle（bundle 依赖插件包）：
+
+```bash
+# 1. 同步 skill 正文（每次改动 ../cp-notebooker/SKILL.md 后都要跑）
+node bundle/scripts/sync-skill.mjs
+
+# 2. 构建插件
+cd bundle/cp-notebooker-skill
+npm install
+npm run build
+npm publish --access public
+
+# 3. 发布 bundle
+cd ../cp-notebooker-bundle
+npm install
+npm publish --access public
+```
+
+> 注意：`@deepseek-ai/*` scope 从官方 registry 安装即可（公开包）；发布你自己的 `@xin1z/*` 包需要先 `npm login`。
+
+## 安装（用户侧）
+
+```bash
+dsh plugin --profile web add @xin1z/cp-notebooker-bundle
+# 或 GUI：插件管理器 → install bundle → 填入 @xin1z/cp-notebooker-bundle@0.1.0
+```
+
+## 保持同步
+
+插件里的 `DESCRIPTION` 常量必须与 `../cp-notebooker/SKILL.md` frontmatter 的 `description` 一致；skill 正文由 `scripts/sync-skill.mjs` 从 canonical SKILL.md 生成，改完记得重新跑。
