@@ -1,0 +1,8 @@
+# Dependencies
+node_modules/
+
+# Build output
+bundle/cp-notebooker-skill/lib/
+
+# Local skill install (symlink)
+.dsh/
