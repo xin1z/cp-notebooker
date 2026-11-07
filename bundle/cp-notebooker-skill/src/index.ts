@@ -26,7 +26,7 @@ const RESOURCE_BASE = {
 } as const
 const INVOCATION = { modelInvocable: true, userInvocable: true } as const
 const DESCRIPTION =
-  'Competitive-programming study companion. Verify every CP/math/contest fact via web search, answer questions, and proactively distill concise LaTeX notes into categorized folders in this repository.'
+  'Competitive-programming study companion. Verify every CP/math/contest fact via web search, answer questions, and proactively distill concise LaTeX notes into categorized folders in the current project.'
 
 const CANDIDATE: SkillCandidate = {
   name: 'cp-notebooker',

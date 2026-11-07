@@ -6,3 +6,7 @@ bundle/cp-notebooker-skill/lib/
 
 # Local skill install (symlink)
 .dsh/
+
+# Runtime output if the skill is ever run inside this repo
+tags.txt
+notes/
