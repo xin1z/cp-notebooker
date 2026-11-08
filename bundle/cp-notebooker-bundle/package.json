@@ -1,7 +1,7 @@
 {
   "name": "@xin1z/cp-notebooker-bundle",
   "description": "Install cp-notebooker as a discoverable DeepSeek Harness skill.",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "author": "Xin",
   "repository": {
@@ -44,7 +44,7 @@
     "LICENSE"
   ],
   "dependencies": {
-    "@xin1z/cp-notebooker-skill": "0.1.2"
+    "@xin1z/cp-notebooker-skill": "0.1.3"
   },
   "publishConfig": {
     "access": "public"
