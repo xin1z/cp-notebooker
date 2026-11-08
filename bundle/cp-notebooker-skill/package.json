@@ -1,7 +1,7 @@
 {
   "name": "@xin1z/cp-notebooker-skill",
   "description": "Bundled cp-notebooker skill provider for DeepSeek Harness.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "type": "module",
   "main": "lib/index.js",

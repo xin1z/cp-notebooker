@@ -25,12 +25,12 @@ bundle/
 - `bundle/cp-notebooker-skill/package.json` 的 `version`
 - `bundle/cp-notebooker-bundle/package.json` 的 `version`，以及它对 `@xin1z/cp-notebooker-skill` 的 dependency
 
-发新版本时先统一改这三处，例如 0.1.1：
+发新版本时先统一改这三处，例如 0.1.2：
 
 ```bash
-(cd bundle/cp-notebooker-skill && npm version 0.1.1 --no-git-tag-version)
-(cd bundle/cp-notebooker-bundle && npm version 0.1.1 --no-git-tag-version)
-# 再把 bundle 的 dependency 和 SKILL.md 的 metadata.version 改成 0.1.1
+(cd bundle/cp-notebooker-skill && npm version 0.1.2 --no-git-tag-version)
+(cd bundle/cp-notebooker-bundle && npm version 0.1.2 --no-git-tag-version)
+# 再把 bundle 的 dependency 和 SKILL.md 的 metadata.version 改成 0.1.2
 ```
 
 ```bash
@@ -58,8 +58,8 @@ npm publish --access public
 ## 安装（用户侧）
 
 ```bash
-dsh plugin --profile web add @xin1z/cp-notebooker-bundle@0.1.1
-# 或 GUI：插件管理器 → install bundle → 填入 @xin1z/cp-notebooker-bundle@0.1.1
+dsh plugin --profile web add @xin1z/cp-notebooker-bundle@0.1.2
+# 或 GUI：插件管理器 → install bundle → 填入 @xin1z/cp-notebooker-bundle@0.1.2
 ```
 
 ## 保持同步
