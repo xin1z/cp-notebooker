@@ -19,10 +19,10 @@ cp-notebooker/            # this skill
 └── README.md             # this file
 ```
 
-Notes and tags live in the repository root, not inside this folder:
+Notes and tags live in the **target project's root** — the session workspace root — not inside this skill folder or the skill's source repository:
 
 ```
-repo root/
+project root/
 ├── tags.txt              # allowed tags, one per line
 └── notes/
     ├── algorithms/
@@ -36,7 +36,8 @@ repo root/
     ├── strings/
     ├── probability/
     ├── game-theory/
-    └── problems/
+    ├── problems/
+    └── misc/
 ```
 
 ## How to use
@@ -51,9 +52,11 @@ Install this skill in your DSH profile, then talk about competitive programming 
 
 | Status | Meaning | Who sets it |
 | --- | --- | --- |
-| `unreviewed` | Just written, not yet verified | agent (default) |
-| `llm-reviewed` | Agent re-checked claims against sources | agent, after verification |
+| `unreviewed` | Just written; not yet through the independent review pass | agent (default) |
+| `llm-reviewed` | Agent re-checked claims against sources and recorded them in `## Sources` | agent, after the review pass |
 | `user-reviewed` | You have reviewed the note | user only |
+
+`unreviewed` does not mean the writing pass skipped verification; it means the separate review pass has not happened yet.
 
 ## Frontmatter
 
@@ -67,6 +70,8 @@ status: unreviewed
 category: data-structures
 ---
 ```
+
+Sources are recorded in the body under `## Sources` (required for `llm-reviewed` notes), not as a frontmatter key.
 
 ## License
 
