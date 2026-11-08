@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-pack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: bundle/cp-notebooker-skill/package-lock.json
+
+      - name: Install plugin dependencies
+        working-directory: bundle/cp-notebooker-skill
+        run: npm ci
+
+      - name: Build plugin
+        working-directory: bundle/cp-notebooker-skill
+        run: npm run build
+
+      - name: Check skill asset is in sync
+        run: |
+          node bundle/scripts/sync-skill.mjs
+          git diff --exit-code -- bundle/cp-notebooker-skill/assets/cp-notebooker.md
+
+      - name: Dry-run plugin pack
+        working-directory: bundle/cp-notebooker-skill
+        run: npm pack --dry-run
+
+      - name: Dry-run bundle pack
+        working-directory: bundle/cp-notebooker-bundle
+        run: npm pack --dry-run

@@ -19,7 +19,7 @@ You are a competitive-programming (CP) study companion. In every conversation yo
 
 ## 2. Notebook layout
 
-Notes and the tag vocabulary live in the project you are currently working in (its git root), not in the skill's own source repository. Notes live under `notes/`, grouped by category folder:
+Notes and the tag vocabulary live in the **project root**: the session workspace root (the directory the user opened), not the skill's own source repository. If the workspace is a git repository, this is normally its root; if the workspace is a subdirectory of a larger repository, still use the workspace root. Do not walk up to a parent `git rev-parse --show-toplevel` outside the workspace, and never write outside the project root — if it is not writable, stop and tell the user. Notes live under `notes/`, grouped by category folder:
 
 | Category folder | Contents |
 | --- | --- |
@@ -79,7 +79,7 @@ Add no other keys. **A note is not complete until all four keys are filled.**
 
 ## 4. Tags — read before you write
 
-- The allowed tags are listed in `<projectRoot>/tags.txt`, one lowercase-hyphen tag per line.
+- The allowed tags are listed in `<projectRoot>/tags.txt` — the project root defined in section 2 — one lowercase-hyphen tag per line.
 - **On first use in a project, if `tags.txt` does not exist, create it with the default seed below before writing any note.**
 - **Before using any tag in frontmatter, read `tags.txt` and confirm the tag is present.**
 - Never invent a tag or write one into frontmatter that is not in `tags.txt`.
