@@ -6,15 +6,25 @@ npm 可发布的 DSH skill bundle，结构镜像官方 `@deepseek-ai/dsh-experim
 
 ```
 bundle/
-├── scripts/sync-skill.mjs          # 把 ../cp-notebooker/SKILL.md 的正文同步进插件资产
+├── scripts/
+│   ├── sync-skill.mjs              # 同步正文 + 校验 DESCRIPTION
+│   └── check-versions.mjs          # 校验四处版本号一致
 ├── cp-notebooker-skill/            # 插件：注册 bundled skill provider
 │   ├── package.json
 │   ├── tsconfig.json
+│   ├── README.md
+│   ├── LICENSE
+│   ├── icon.svg
+│   ├── locale/{en,zh}.json
 │   ├── assets/cp-notebooker.md     # skill 正文（无 frontmatter，由 sync 脚本生成）
 │   └── src/index.ts
 └── cp-notebooker-bundle/           # bundle：可安装的元数据包
     ├── package.json               # dsh.bundle.patch → cordis.patch.yml
-    └── cordis.patch.yml
+    ├── cordis.patch.yml
+    ├── README.md
+    ├── LICENSE
+    ├── icon.svg
+    └── locale/{en,zh}.json
 ```
 
 ## 发布
@@ -34,6 +44,9 @@ bundle/
 ```
 
 ```bash
+# 0. 检查版本号一致
+node bundle/scripts/check-versions.mjs
+
 # 1. 同步 skill 正文（每次改动 ../cp-notebooker/SKILL.md 后都要跑）
 node bundle/scripts/sync-skill.mjs
 
@@ -41,7 +54,7 @@ node bundle/scripts/sync-skill.mjs
 cd bundle/cp-notebooker-skill
 npm ci
 npm run build
-npm pack --dry-run        # 确认 lib/、assets/ 都在包里；prepack 也会自动构建
+npm pack --dry-run        # 确认 lib/、assets/、README/LICENSE、icon、locale 都在包里
 npm publish --access public
 
 # 3. 发布 bundle（插件包已发布后）
@@ -59,9 +72,10 @@ npm publish --access public
 
 ```bash
 dsh plugin --profile web add @xin1z/cp-notebooker-bundle@0.1.2
+# Desktop 用户把 --profile web 换成 --profile desktop，或直接在 GUI 安装
 # 或 GUI：插件管理器 → install bundle → 填入 @xin1z/cp-notebooker-bundle@0.1.2
 ```
 
 ## 保持同步
 
-插件里的 `DESCRIPTION` 常量必须与 `../cp-notebooker/SKILL.md` frontmatter 的 `description` 一致；skill 正文由 `scripts/sync-skill.mjs` 从 canonical SKILL.md 生成。CI 会运行 `sync-skill.mjs` 并检查 asset 是否有 diff，所以改完 SKILL.md 记得重新跑。
+插件里的 `DESCRIPTION` 常量必须与 `../cp-notebooker/SKILL.md` frontmatter 的 `description` 一致；skill 正文由 `scripts/sync-skill.mjs` 从 canonical SKILL.md 生成。发布前跑 `node bundle/scripts/sync-skill.mjs`；CI 会跑 `node bundle/scripts/sync-skill.mjs --check`（正文 + DESCRIPTION）和 `node bundle/scripts/check-versions.mjs`（四处版本号）。改完 SKILL.md 记得重新同步。

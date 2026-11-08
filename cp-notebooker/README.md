@@ -42,11 +42,11 @@ project root/
 
 ## How to use
 
-Install this skill in your DSH profile, then talk about competitive programming as usual. The agent will verify facts, answer, and maintain the notes for you.
+Install the bundle with `dsh plugin --profile <name> add @xin1z/cp-notebooker-bundle` (or link this folder into your profile's skills directory), then talk about competitive programming as usual. The agent will verify facts, answer, and maintain the notes in the target project.
 
 ## Tags workflow
 
-`tags.txt` is the single source of truth for frontmatter tags. The agent reads it before using any tag, and asks you before adding a new one. The file is seeded with a starter vocabulary — edit it freely.
+`tags.txt` is the single source of truth for frontmatter tags. The agent reads it before using any tag and asks you before adding or removing one. You can edit the file yourself, but keep the tags that existing notes already use.
 
 ## Status meanings
 

@@ -118,8 +118,8 @@ segment-tree
 shortest-path
 sieve
 sliding-window
-strings
 string-hashing
+strings
 two-pointers
 ```
 

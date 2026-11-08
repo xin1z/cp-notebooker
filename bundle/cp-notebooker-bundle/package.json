@@ -3,6 +3,24 @@
   "description": "Install cp-notebooker as a discoverable DeepSeek Harness skill.",
   "version": "0.1.2",
   "license": "MIT",
+  "author": "Xin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xin1z/cp-notebooker.git",
+    "directory": "bundle/cp-notebooker-bundle"
+  },
+  "homepage": "https://github.com/xin1z/cp-notebooker#readme",
+  "bugs": {
+    "url": "https://github.com/xin1z/cp-notebooker/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "bundle",
+    "skill",
+    "competitive-programming"
+  ],
+  "icon": "./icon.svg",
   "type": "module",
   "dsh": {
     "bundle": {
@@ -14,10 +32,16 @@
   },
   "exports": {
     "./package.json": "./package.json",
-    "./cordis.patch.yml": "./cordis.patch.yml"
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
   },
   "files": [
-    "cordis.patch.yml"
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "@xin1z/cp-notebooker-skill": "0.1.2"

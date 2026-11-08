@@ -3,6 +3,23 @@
   "description": "Bundled cp-notebooker skill provider for DeepSeek Harness.",
   "version": "0.1.2",
   "license": "MIT",
+  "author": "Xin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xin1z/cp-notebooker.git",
+    "directory": "bundle/cp-notebooker-skill"
+  },
+  "homepage": "https://github.com/xin1z/cp-notebooker#readme",
+  "bugs": {
+    "url": "https://github.com/xin1z/cp-notebooker/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "skill",
+    "competitive-programming"
+  ],
+  "icon": "./icon.svg",
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -11,11 +28,17 @@
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
   },
   "files": [
     "lib",
-    "assets"
+    "assets",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsc",
