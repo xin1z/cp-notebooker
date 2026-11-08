@@ -8,7 +8,8 @@ npm 可发布的 DSH skill bundle，结构镜像官方 `@deepseek-ai/dsh-experim
 bundle/
 ├── scripts/
 │   ├── sync-skill.mjs              # 同步正文 + 校验 DESCRIPTION
-│   └── check-versions.mjs          # 校验四处版本号一致
+│   ├── check-versions.mjs          # 校验四处版本号一致
+│   └── smoke-provider.mjs          # 构建后用假 ctx 冒烟测试
 ├── cp-notebooker-skill/            # 插件：注册 bundled skill provider
 │   ├── package.json
 │   ├── tsconfig.json

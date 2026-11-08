@@ -33,6 +33,9 @@ jobs:
         working-directory: bundle/cp-notebooker-skill
         run: npm run build
 
+      - name: Smoke-test bundled provider
+        run: node bundle/scripts/smoke-provider.mjs
+
       - name: Dry-run plugin pack
         working-directory: bundle/cp-notebooker-skill
         run: npm pack --dry-run
